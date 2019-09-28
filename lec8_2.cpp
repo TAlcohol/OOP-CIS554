@@ -1,4 +1,4 @@
-// template
+// template and Multi_leve_Containers
 
 #include <iostream>
 #include <string>
@@ -25,7 +25,8 @@ public:
 
 // data type can view as a parameter
 
-template <class T> class ThreeD {
+template <class T> class ThreeD { //template allow us to view
+//data type as argument passed to a stucture, such as a class, a funciton, etc.
 public:
     T ht;
     T wid;
@@ -48,6 +49,7 @@ template <class X> ostream& operator<<(ostream& str, const ThreeD<X>& t) {
     return str;
 }
 
+//Allows cout for list<any object>
 template <class X> ostream& operator<<(ostream& str, const list<X>& L) {
     str << "<";
     for (auto i: L) { str << i << " "; }
@@ -127,6 +129,18 @@ int main() {
     // you could do
     // map<int, map<int, list<vector<int> *>* >>
 
+
+	list<vector<int>> L1 = { {1,2,3}, {4,5}, {7,8,9,10} };
+	cout << L1 << endl;
+
+
+	map<int, list<int> > M2 = { {5, {7,8,9}},{11, {4,5,6}}, {4,{3,7,4}} };
+	cout << M2 << endl;
+
+	list<map<int, vector<int>>> L2 = { { {3, {7,8,9}}, {4, {5,6,7,8}} }, {{4, {1,2,3,4,5}}, {5, {11,12} }},
+		{ {7, {100,200}},{8, {55,66,77,88}}} };
+
+	cout << L2 << endl;
 
     char c1;
     c1 = getchar();

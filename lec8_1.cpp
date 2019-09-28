@@ -40,7 +40,7 @@ public:
 	DoublyLinkedList(const initializer_list<int>& I);
 
 };
-DoublyLinkedList::DoublyLinkedList(const initializer_list<int>& I) {
+DoublyLinkedList::DoublyLinkedList(const initializer_list<int>& I):DoublyLinkedList {
 	auto it = I.begin();
 	while (it != I.end()) {
 		Node* p1 = new Node(*it);

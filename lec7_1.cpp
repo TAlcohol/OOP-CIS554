@@ -22,15 +22,21 @@ public:
 	void reverse();
 	void sort();
 	void removeOne(int k);
-    LinkedList(const initializer_list<int> &I);
+    LinkedList(const initializer_list<int> &I); // Initializer_list carries the function name
+	//the same as class name.
 };
 
 LinkedList::LinkedList(const initializer_list<int> &I) {
     // initializer_list is a longest key in C++
     auto it = I.end() - 1; // last element
+	// The complete type is:
+	// initializer_list<int>::iterator it = I.end() - 1;
+	// Using auto greately simplify the notation
+
     while (it != I.begin() - 1) {
-        Node *p = new Node(*it);
-        p -> next = head;
+        Node *p = new Node(*it); // Remember that the first node
+        // added to the linked list will become the last node of linked list
+		p -> next = head;
         head = p;
         it--;
     }
@@ -118,7 +124,8 @@ void LinkedList::removeOne(int k) { //Remove a node (the first of such nodes) wi
 }
 
 int main() {
-    LinkedList L0 = { 1, 2, 3, 4, 5 };
+    LinkedList L0 = { 1, 2, 3, 4, 5 }; // This is possible because the
+	// the initializer_list implemented earlier for the class
     L0.printList();
 
 

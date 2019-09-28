@@ -36,7 +36,7 @@ public:
     T getArea();
 };
 
-template <class T> T ThreeD<T>::getArea() {
+template <class T> T ThreeD<T>::getArea() { // Notice the syntax.
     return 2*(ht*wid + wid*dep + dep*ht);
 }
 
