@@ -87,8 +87,16 @@ int main() {
 	t3 = t1.getThreeTimes(); //t3.operator=(t1.getThreeTimes()); temp->hidden copy
 	t3.print();
 
-    // t1 = t2 = t3.getThreeTimes();
+    // BigData t6, t7;
+    // t7 = t6 = t1.getThreeTimes();
+    // this will not run successfully
+    // because when we implemented R-value assignment, the return value is void.
+    // we need return reference to make the assignment transfering
+    // now, only t3 = t1.getThreeTimes(); is working
+    // t7 = t6 = t1 is not working
 
+    // but t4 = t5 = t1; is working
+    // because when we implemented L-value assignment, the return value is BigData&
 
 	cout << endl;
 	t4 = t5 = t1;//t4.operator=(t5.operator=(t1))
@@ -105,9 +113,9 @@ Leaving copy constructor!//due to BigData t8{t1}
 0 10 20 30 40 50 60 70 80 90
 Leaving L-value operator= //due to t2=t1
 0 10 20 30 40 50 60 70 80 90
-Leaving move constructor//due to t3 = t1.getThreeTimes();  copy temp to hidden copy
+Leaving move constructor//due to t3 = t1.getThreeTimes();  copy temp to hidden copy // temp changed to be R-value, so when returning, it called move constructor
 Leaving Destructor //due to t3 = t1.getThreeTimes(); hidden copy out of scope and destructor is called
-Leaving R-value operator=//due to t3 = t1.getThreeTimes();
+Leaving R-value operator=//due to t3 = t1.getThreeTimes(); // t1.getThreeTimes() is R-value, so when assigning, it call move assignment(R-value operator=)
 Leaving Destructor//t3 = t1.getThreeTimes(); hidden copy out of scope and destructor is called
 0 30 60 90 120 150 180 210 240 270
 Leaving L-value operator= //due to t4=t5=t1
@@ -115,5 +123,27 @@ Leaving L-value operator= //due to t4=t5=t1
 
 0 10 20 30 40 50 60 70 80 90
 0 10 20 30 40 50 60 70 80 90
+
+*/
+
+
+/*
+
+Besides the constructor,
+there are 4 functions:
+
+Name                    Purpose                         Argument                        Return
+copy constructor        --> for initialization          const BigData& B                no return
+move constructor        --> for initialization          BigData&& B                     no return
+L-value operator=       --> for assignment              const BigData& B                BigData& / void
+R-value operator=       --> for assignment              BigData&& B                     BigData& / void
+"R-value operator=", another name is move assignment
+
+The original difference between L-value and R-value: L-value has a address
+
+int a = b
+b is L-value, it is used like a R-value
+
+R-value always are temporary things, which are going to be destroyed
 
 */
