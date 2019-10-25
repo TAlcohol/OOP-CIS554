@@ -82,7 +82,7 @@ More on capture clause:
 }
 
 
-// lambda allows you to access local variables in the scope,
-// from this point of view, lambda is more powerful than functions
+// lambda allows you to access local variables from the enclosing scope,
+// from this point of view, lambda is more powerful than ordinary functions
 // because functions are created to be reused, lambda is created to use one time,
 // include all the local variables are not a big deal.
