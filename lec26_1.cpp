@@ -77,11 +77,19 @@ int main() {
 	M1.insert({ 5, "Bob" });
 	for (auto i : M1) { cout << i.first << " " << i.second << " "; }
 	cout << endl;
+    // if there is a same key insert, like M1.insert({ 8, "Mary" });
+    // it will just ignore it, won't change value
+    // but if M1[8] = "Mary";
+    // it will change the value
+    // because the inside implement of insert and [] is different
 
 	multimap<int, string> M2 = { {6, "Dave"}, {8, "Sanjay"}, {4, "Nancy"},{3, "Ling"}, {6,"Bob"} };
 	M2.insert({ 6,"John" });
 	for (auto i : M2) { cout << i.first << " " << i.second << " "; }
-	cout << endl;
+	// John will appear after Bob
+    // if John already in the M2, insert "Bob", Bob will appear after John
+    cout << endl;
+
 
     // the default is less
     // less is a class, like a functor
