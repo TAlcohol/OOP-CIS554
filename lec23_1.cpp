@@ -30,11 +30,15 @@ int main() {
     // static_cast is similar to raw type casting
     // that C++ inherits from C
     // However, it is safer
+    //static_cast is only performed during compile time
 
     ThreeD t1{ 3, 4, 5 };
     int m = t1;
-    cout << m << endl;
-    cout << static_cat<string>(t1) << endl;
+    cout << m << endl; // output 12
+    cout << static_cast<string>(t1) << endl; // output THis is funny!
+
+    //type casting during run time
+	//dynamic_cast
 
 
     cin.get();

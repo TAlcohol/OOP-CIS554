@@ -23,6 +23,7 @@ int main() {
     ThreeD t1{ 3,4,5 }; // new feature, although you have no constuctor,
     // it will put in one by one
     f1();
+    cout << global_v << endl;
     typedef vector<list<int>> vl;
     // some compiler you can change "typedef" to "using"
 
