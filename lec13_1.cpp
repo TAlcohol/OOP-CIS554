@@ -1,7 +1,8 @@
 // example of BigArray and get3times
 
 // delete works for pointers
-// for iterator, you can not, to get rid of the object you have to use erase.
+// for iterator, you can not use delete,
+// to get rid of the object, you have to use "erase".
 
 #include <iostream>
 using namespace std;
